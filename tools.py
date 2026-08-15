@@ -7,17 +7,12 @@ from langchain_community.tools import (
 from langchain_community.utilities import WikipediaAPIWrapper
 from langchain_core.tools import tool
 
-
-# -------------------------------
 # DuckDuckGo Search
-# -------------------------------
 
 search_tool = DuckDuckGoSearchRun()
 
 
-# -------------------------------
 # Wikipedia
-# -------------------------------
 
 api_wrapper = WikipediaAPIWrapper(
     top_k_results=2,
@@ -28,11 +23,7 @@ wiki_tool = WikipediaQueryRun(
     api_wrapper=api_wrapper
 )
 
-
-# -------------------------------
 # Save to TXT
-# -------------------------------
-
 @tool
 def save_to_txt(
     data: str,

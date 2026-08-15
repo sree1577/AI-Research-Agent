@@ -10,19 +10,9 @@ from tools import (
     wiki_tool,
     save_to_txt
 )
-
-
-# ==========================================
 # LOAD ENVIRONMENT VARIABLES
-# ==========================================
-
 load_dotenv()
-
-
-# ==========================================
 # STRUCTURED RESPONSE
-# ==========================================
-
 class ResearchResponse(BaseModel):
 
     topic: str = Field(
@@ -42,31 +32,22 @@ class ResearchResponse(BaseModel):
     )
 
 
-# ==========================================
 # LLM
-# ==========================================
-
 llm = ChatAnthropic(
     model="claude-sonnet-4-20250514",
     api_key=os.getenv("ANTHROPIC_API_KEY"),
     temperature=0.7
 )
 
-# ==========================================
-# TOOLS
-# ==========================================
 
+# TOOLS
 tools = [
     search_tool,
     wiki_tool,
     save_to_txt
 ]
 
-
-# ==========================================
 # CREATE AGENT
-# ==========================================
-
 agent = create_agent(
     model=llm,
     tools=tools,
@@ -100,19 +81,12 @@ Rules:
 """
 )
 
-
-# ==========================================
 # USER INPUT
-# ==========================================
-
 query = input(
     "\nWhat can I help you research? "
 )
 
-
-# ==========================================
 # RUN AGENT
-# ==========================================
 
 try:
 
@@ -128,19 +102,14 @@ try:
     )
 
 
-    # ======================================
     # STRUCTURED RESPONSE
-    # ======================================
-
     structured_response = result.get(
         "structured_response"
     )
 
 
-    # ======================================
-    # DISPLAY
-    # ======================================
 
+    # DISPLAY
     print("\n")
     print("=" * 60)
     print("RESEARCH RESULT")
