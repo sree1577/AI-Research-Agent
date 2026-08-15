@@ -3,3 +3,4 @@ venv/
 __pycache__/
 *.pyc
 research_output.txt
+.vscode/
